@@ -1,0 +1,131 @@
+GET /api/usuarios/1
+{
+  "id": 1,
+  "nombre": "Juan",
+  "email": "juan@ejemplo.com"
+}
+
+GET /api/usuarios/1/compras
+
+[
+  {"id": 101, "producto": "Laptop", "precio": 800},
+  {"id": 102, "producto": "Teléfono", "precio": 500}
+]
+
+
+{
+  usuario(id: 1) {
+    nombre
+    email
+    compras {
+      producto
+      precio
+    }
+  }
+}
+
+
+{
+  "data": {
+    "usuario": {
+      "nombre": "Juan",
+      "email": "juan@ejemplo.com",
+      "compras": [
+        {"producto": "Laptop", "precio": 800},
+        {"producto": "Teléfono", "precio": 500}
+      ]
+    }
+  }
+}
+
+
+GET /api/paquetes/12345/estado
+
+{
+  "paquete_id": 12345,
+  "estado": "En tránsito"
+}
+
+{
+  usuario(id: 1) {
+    nombre
+    publicaciones {
+      titulo
+      comentarios {
+        texto
+        autor {
+          nombre
+        }
+      }
+    }
+  }
+}
+
+
+{
+  "usuario": {
+    "nombre": "Ana",
+    "publicaciones": [
+      {
+        "titulo": "Mi nuevo blog",
+        "comentarios": [
+          {"texto": "Genial", "autor": {"nombre": "Pedro"}},
+          {"texto": "Me encanta", "autor": {"nombre": "Laura"}}
+        ]
+      }
+    ]
+  }
+}
+
+
+
+http://localhost:5000/api/grupo1
+http://localhost:5000/api/grupo2
+http://localhost:5000/api/grupo3
+
+http://localhost:5000/graphql
+
+{
+  sistema_3
+}
+
+
+mutation {
+  ejecutar_grupo1
+}
+
+
+
+mutation {
+  ejecutar_grupo2
+}
+
+
+http://localhost:5000/api/productos
+
+http://localhost:5000/api/productos/1
+
+
+http://localhost:5000/graphql
+
+{
+  productos {
+    id
+    nombre
+    categoria
+  }
+}
+
+mutation {
+  crearProducto(nombre: "Producto C", precio: 30.0, categoria: "Categoria 3") {
+    id
+    nombre
+  }
+}
+
+{
+  producto(id: 1) {
+    nombre
+    precio
+  }
+}
